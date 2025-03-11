@@ -22,6 +22,7 @@ function CountryList() {
 
   return (
     <ul className={styles.countryList}>
+      <li>country</li>
       {countries.map((country) => (
         <CountryItem country={country} key={country.country} />
       ))}
