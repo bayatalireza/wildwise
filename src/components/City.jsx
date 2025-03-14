@@ -5,7 +5,6 @@ import { useEffect } from "react";
 import Spinner from "./Spinner";
 import BackButton from "./BackButton";
 
-
 const formatDate = (date) =>
   new Intl.DateTimeFormat("en", {
     day: "numeric",
@@ -15,16 +14,14 @@ const formatDate = (date) =>
   }).format(new Date(date));
 
 function City() {
-  const {id} = useParams();
+  const { id } = useParams();
   const [getCity, currentCity, isLoading] = useCities();
 
-
-  
-  useEffect(()=>{
+  useEffect(() => {
     getCity(id);
-  }, [id, getCity])
+  }, [id, getCity]);
   const { cityName, emoji, date, notes } = currentCity;
-  if(isLoading) return <Spinner />;
+  if (isLoading) return <Spinner />;
 
   return (
     <div className={styles.city}>
