@@ -24,7 +24,7 @@ export default function Login() {
         navigate("/app", {replace: true});
       }
     },
-    [isAuthenticated, navigate]
+    [navigate]
   );
 
   return (
