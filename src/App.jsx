@@ -1,5 +1,10 @@
-import React, { lazy } from "react";
+import React, { lazy, Suspense } from "react";
 import { BrowserRouter, Form, Route, Routes } from "react-router-dom";
+
+import{ CitiesProvider } from "./contexts/CitiesContext";
+import { AuthProvider } from "./contexts/AuthContext";
+import ProtectedRoute from "./components/ProtectedRoute";
+
 // import HomePage from "./pages/Homepage";
 // import Product from "./pages/Product";
 // import Pricing from "./pages/Pricing";
@@ -16,15 +21,14 @@ import City from "./components/City";
 import Cities from "./components/CityList";
 import CityList from "./components/CityList";
 import CountryList from "./components/CountryList";
-import { CitiesProvider } from "./contexts/CitiesContext";
-import { AuthProvider } from "./contexts/FakeAuthContext";
-import ProtectedRoute from "./pages/ProtectedRoute";
+import SpinnerFullPage from "./components/SpinnerFullPage";
 
 function App() {
   return (
     <AuthProvider>
       <CitiesProvider>
         <BrowserRouter>
+        <Suspense fallback={<SpinnerFullPage />}>
           <Routes>
             <Route index element={<Homepage />} />
             <Route path="product" element={<Product />} />
@@ -46,6 +50,7 @@ function App() {
             </Route>
             <Route path="*" element={<PageNotFound />} />
           </Routes>
+          </Suspense>
         </BrowserRouter>
       </CitiesProvider>
     </AuthProvider>
