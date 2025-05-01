@@ -1,11 +1,17 @@
+import React, { lazy } from "react";
 import { BrowserRouter, Form, Route, Routes } from "react-router-dom";
-import HomePage from "./pages/Homepage";
-import Product from "./pages/Product";
-import Pricing from "./pages/Pricing";
-import PageNotFound from "./pages/PageNotFound";
-import AppLayout from "./pages/AppLayout";
-import Login from "./pages/Login";
-import Homepage from "./pages/Homepage";
+// import HomePage from "./pages/Homepage";
+// import Product from "./pages/Product";
+// import Pricing from "./pages/Pricing";
+// import PageNotFound from "./pages/PageNotFound";
+// import AppLayout from "./pages/AppLayout";
+// import Login from "./pages/Login";
+
+const HomePage = lazy(() => import("./pages/Homepage"));
+const Product = lazy(() => import("./pages/Product"));
+const Pricing = lazy(() => import("./pages/Pricing"));
+const PageNotFound = lazy(() => import("./pages/PageNotFound"));
+const AppLayout = lazy(() => import("./pages/AppLayout"));
 import City from "./components/City";
 import Cities from "./components/CityList";
 import CityList from "./components/CityList";
